@@ -9,4 +9,5 @@ class Neighbourhood(models.Model):
     location = models.CharField(max_length = 100)
     occupants = models.PositiveIntegerField(default = 0)
     
-    
+    def create_neighbourhood(self):
+        self.save()
