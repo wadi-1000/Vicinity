@@ -1,1 +1,28 @@
-<h1>Yo wassgud!!</h1>
+{%extends "base.html"%}
+{% load bootstrap5 %}
+{%load static%}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<div class="container">
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+       <img src="https://images.unsplash.com/photo-1555192881-d1bee8bdfedf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDZ8fGhvdXNlc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+       </div>
+    </div>
+
+    <div class="col-md-6">
+        
+        <h1>Welcome to Vicinity</h1>
+        <p>Vicinity is an application that helps a group of people living in the same area who want to make their neighborhood safer and better by working together and in conjunction with local law enforcement to improve their quality of life.</p>
+        
+        <p>The aim is to bring together Kenyans in clusters defined by their physical locations and common interests; a safe, sustainable and prosperous neighborhood.</p>
+         
+        <p style="color: rgb(207, 151, 8); font-weight: bold;">Tushirikiane kinyumba kumi!</p>
+
+        
+        
+    </div>
+</div>
+</div>
+{% endblock %}
