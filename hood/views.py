@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from models import Neighbourhood
+from django.shortcuts import render,redirect
+from .models import Neighbourhood
+from .forms import UploadNewNeighbourhood
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.views.generic.edit import CreateView
@@ -15,11 +16,11 @@ def uploadNeighbourhood(request):
     current_user=request.user
 
     if request.method =="POST":
-        form=UploadNewProject(request.POST, request.FILES)
+        form=UploadNewNeighbourhood(request.POST, request.FILES)
         if form.is_valid():
-            hood=form.save(commit=False)
-            hood.user=current_user
-            hood.save()
+            neighbourhood=form.save(commit=False)
+            neighbourhood.user=current_user
+            neighbourhood.save()
 
         return redirect('home')
 
@@ -27,3 +28,8 @@ def uploadNeighbourhood(request):
         form=UploadNewNeighbourhood()
 
     return render(request, 'uploadhood.html', {"form":form})
+
+@login_required
+def viewhood(request):
+
+    return render(request,'hood.html')
