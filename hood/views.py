@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .models import Neighbourhood
-from .forms import UploadNewNeighbourhood
+from .models import Neighbourhood,Buisness
+from .forms import UploadNewNeighbourhood,UploadNewBuisness
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.views.generic.edit import CreateView
@@ -68,5 +68,25 @@ def uploadBuisness(request):
 
     return render(request, 'uploadbuisness.html', {"form":form})
 
+
+
+@login_required
+def viewBizna(request):
     
+    bizna = Buisness.objects.all()
+    context = {
+       
+        'bizna':bizna
+      }
+
+    return render(request,'bizna.html', context)
+
+
+@login_required
+def bizna(request,pk):
+    bizna=Buisness.objects.filter(id=pk)
+    current_user=request.user
+
+
+    return render(request, 'viewbizna.html', {"bizna":bizna})
 
