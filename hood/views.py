@@ -22,7 +22,7 @@ def uploadNeighbourhood(request):
             neighbourhood.user=current_user
             neighbourhood.save()
 
-        return redirect('home')
+        return redirect('viewhood')
 
     else:
         form=UploadNewNeighbourhood()
@@ -47,3 +47,26 @@ def hood(request,pk):
 
 
     return render(request, 'viewhood.html', {"hood":hood})
+
+
+@login_required
+def uploadBuisness(request):
+    form=UploadNewBuisness()
+    current_user=request.user
+
+    if request.method =="POST":
+        form=UploadNewBuisness(request.POST, request.FILES)
+        if form.is_valid():
+            buisness=form.save(commit=False)
+            buisness.user=current_user
+            buisness.save()
+
+        return redirect('viewhood')
+
+    else:
+        form=UploadNewBuisness()
+
+    return render(request, 'uploadbuisness.html', {"form":form})
+
+    
+
