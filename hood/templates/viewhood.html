@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/viewhood.css' %}">
+<div class="container-fluid viewhood">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-7">
+            <div class="card">
+            <div id="viewhood">
+                {% for hood in hood %}
+                <h5>Hood Name: {{hood.hood}}</h5>
+                <img src="{{hood.pic.url}}" class="responsive" alt="{{hood.description}}" id="pic">
+                <br>
+                <br>
+
+                <p class="viewdescription">{{hood.description}}</p>
+                <p>Location: {{hood.location}}</p>
+                <p class="viewhealth"> Health hotline: {{hood.hospital_number}}</p>
+                <p class="viewpolice"> Police Hotline: {{hood.police_number}}</p>
+                {% endfor %}
+            </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}
