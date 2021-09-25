@@ -26,3 +26,11 @@ class Buisness(models.Model):
    hood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE,null=True)
    image = CloudinaryField('image')
    email = models.EmailField(default = "Please put in your buisness email address")
+
+    def create_buisness(self):
+        self.save()
+    
+    # def delete_buisness(self):
+    #     self.delete()
+
+
