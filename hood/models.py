@@ -30,7 +30,7 @@ class Buisness(models.Model):
     def create_buisness(self):
         self.save()
     
-    # def delete_buisness(self):
-    #     self.delete()
+    def delete_buisness(self):
+        self.delete()
 
 
