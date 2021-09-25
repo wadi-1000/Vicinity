@@ -30,6 +30,20 @@ def uploadNeighbourhood(request):
     return render(request, 'uploadhood.html', {"form":form})
 
 @login_required
-def viewhood(request):
+def viewHood(request):
+    
+    hoods = Neighbourhood.objects.all()
+    context = {
+       
+        'hoods':hoods
+      }
 
-    return render(request,'hood.html')
+    return render(request,'hood.html', context)
+
+@login_required
+def hood(request,pk):
+    hood=Neighbourhood.objects.filter(id=pk)
+    current_user=request.user
+
+
+    return render(request, 'viewhood.html', {"hood":hood})
