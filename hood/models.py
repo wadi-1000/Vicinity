@@ -12,9 +12,17 @@ class Neighbourhood(models.Model):
     hospital_number = models.IntegerField(null=True, blank=True)
     police_number = models.IntegerField(null=True, blank=True)
     occupant_count = models.IntegerField(null=True, blank=True)
-    admin = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='hood')
+    admin = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
     def create_neighbourhood(self):
         self.save()
     
     def delete_neighbourhood(self):
         self.delete()
+
+
+class Buisness(models.Model):
+   name = models.CharField(max_length = 100)
+   owner = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
+   hood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE,null=True)
+   image = CloudinaryField('image')
+   email = models.EmailField(default = "Please put in your buisness email address")
