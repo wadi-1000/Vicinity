@@ -121,3 +121,30 @@ def viewPost(request):
       }
 
     return render(request,'posts.html', context)
+
+
+@login_required
+def searchBizna(request):
+    
+    if 'bizna' in request.GET and request.GET['bizna']:
+        search_term=request.GET.get('bizna')
+        searched_buisnesses=Buisness.search_by_name(search_term)
+        message=f"{search_term}"
+
+        return render(request, "searchb.html", {"bizna":searched_buisnesses, "message":message})
+    else:
+        message="You have not searched for any buissness"
+        return render(request, "searchb.html")
+
+@login_required
+def searchHood(request):
+    
+    if 'hood' in request.GET and request.GET['hood']:
+        search_term=request.GET.get('hood')
+        searched_hoods=Neighbourhood.search_by_hood(search_term)
+        message=f"{search_term}"
+
+        return render(request, "searchh.html", {"hood":searched_hoods, "message":message})
+    else:
+        message="You have not searched for any hoods"
+        return render(request, "searchh.html")

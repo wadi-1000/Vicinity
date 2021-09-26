@@ -10,5 +10,7 @@ urlpatterns = [
     path('bizna/',views.viewBizna, name = 'view_bizna'),
     path('viewbizna/<int:pk>/',views.bizna, name = 'bizna'),
     path('post/',views.create_post, name = 'post'),
-    path('posts/',views.viewPost, name = 'posts')
+    path('posts/',views.viewPost, name = 'posts'),
+    path('searchbizna/', views.searchBizna, name="search_results"),
+    path('searchhood/', views.searchHood, name="search_res"),
 ]
