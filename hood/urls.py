@@ -13,4 +13,6 @@ urlpatterns = [
     path('posts/',views.viewPost, name = 'posts'),
     path('searchbizna/', views.searchBizna, name="search_results"),
     path('searchhood/', views.searchHood, name="search_res"),
+    path('join_hood/<id>', views.join_neighbourhood, name='join-hood'),
+    path('leave_hood/<id>', views.leave_neighbourhood, name='leave-hood'),
 ]

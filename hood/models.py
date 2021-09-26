@@ -22,10 +22,9 @@ class Neighbourhood(models.Model):
     def delete_neighbourhood(self):
         self.delete()
 
-    @classmethod
-    def find_neighbourhood(cls, neighbourhood_id):
-        return cls.objects.filter(id=neighbourhood_id)
-
+    def search_by_hood(search_term):
+        hood=Neighbourhood.objects.filter(hood__icontains=search_term)
+        return hood
 
 
 class Buisness(models.Model):
@@ -42,10 +41,14 @@ class Buisness(models.Model):
    def delete_buisness(self):
         self.delete()
 
+   def search_by_name(search_term):
+        bizna=Buisness.objects.filter(name__icontains=search_term)
+        return bizna
 
 class Post(models.Model):
     title = models.CharField(max_length=100, null=True)
     post = models.TextField()
+    image = CloudinaryField('image')
     date = models.DateTimeField(auto_now_add=True)
     owner = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
     hood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)

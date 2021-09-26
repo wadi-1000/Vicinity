@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 import cloudinary
 import cloudinary.uploader
@@ -135,4 +135,10 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL ='profile'
+LOGIN_REDIRECT_URL ='viewhood'
+
+cloudinary.config(
+    cloud_name='dmtmw7v1e',
+    api_key='229921375592722',
+    api_secret='GD1ytstf5Ry9HJLh9n7jIz8wCGA',
+)

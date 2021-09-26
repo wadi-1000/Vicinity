@@ -8,12 +8,12 @@
         <div class="col-md-3"></div>
         <div class="col-md-6 uploadform">
             <legend style="text-align: center;">Add Your Buisness</legend>
-            <form method ="POST" enctype="multipart/form-data" action="{% url 'add_hood' %}">
+            <form method ="POST" enctype="multipart/form-data" action="{% url 'add_bizna' %}">
                 {% csrf_token %}
 
                 {% bootstrap_form form %}
 
-                <input type="submit" value="Add Hood" class="btn btn-success btn-block btn-md">
+                <input type="submit" value="Add Buisness" class="btn btn-success btn-block btn-md">
             </form>
 
         </div>

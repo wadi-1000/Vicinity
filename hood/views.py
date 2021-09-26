@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import Neighbourhood,Buisness,Post
 from .forms import UploadNewNeighbourhood,UploadNewBuisness,PostForm
 from django.contrib.auth import authenticate, login, logout
@@ -61,7 +61,7 @@ def uploadBuisness(request):
             buisness.user=current_user
             buisness.save()
 
-        return redirect('viewhood')
+        return redirect('view_bizna')
 
     else:
         form=UploadNewBuisness()
@@ -148,3 +148,16 @@ def searchHood(request):
     else:
         message="You have not searched for any hoods"
         return render(request, "searchh.html")
+
+def join_neighbourhood(request, id):
+    neighbourhood = get_object_or_404(Neighbourhood, id=id)
+    request.user.neighbourhood = neighbourhood
+    request.user.profile.save()
+    return redirect('viewhood')
+
+
+def leave_neighbourhood(request, id):
+    hood = get_object_or_404(Neighbourhood, id=id)
+    request.user.neighbourhood = None
+    request.user.profile.save()
+    return redirect('viewhood')

@@ -7,9 +7,10 @@ class Profile(models.Model):
     name = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
     image = CloudinaryField(default = 'default.jpeg')
     bio = models.TextField( default="Please Update Bio")
+    id_number = models.IntegerField(default = 0, unique = True)
     hood=models.ForeignKey(Neighbourhood, on_delete=models.CASCADE,null=True)
     number = models.IntegerField(default =0)
-    email = models.EmailField(default = "Enter your valid email address")
+    email = models.EmailField(default = "Enter your valid email address", unique =True)
 
     def __str__(self):
         return '{} {}'.format(self.image.url, self.bio)
