@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .models import Neighbourhood,Buisness
-from .forms import UploadNewNeighbourhood,UploadNewBuisness
+from .models import Neighbourhood,Buisness,Post
+from .forms import UploadNewNeighbourhood,UploadNewBuisness,PostForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.views.generic.edit import CreateView
@@ -88,16 +88,36 @@ def bizna(request,pk):
     current_user=request.user
     return render(request, 'viewbizna.html', {"bizna":bizna})
 
-def create_post(request, hood_id):
-    hood = Neighbourhood.objects.get(id=hood_id)
-    if request.method == 'POST':
-        form = PostForm(request.POST)
+
+    
+@login_required
+def create_post(request):
+    form=PostForm
+    current_user=request.user
+
+    if request.method =="POST":
+        form=PostForm(request.POST, request.FILES)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.hood = hood
-            post.user = request.user.profile
+            post=form.save(commit=False)
+            post.user=current_user
             post.save()
-            return redirect('hood', hood.id)
+
+        return redirect('viewhood')
+
     else:
-        form = PostForm()
-    return render(request, 'post.html', {'form': form})
+        form=PostForm()
+
+    return render(request, 'post.html', {"form":form})
+
+
+
+@login_required
+def viewPost(request):
+    
+    posts = Post.objects.all()
+    context = {
+       
+        'posts':posts
+      }
+
+    return render(request,'posts.html', context)
