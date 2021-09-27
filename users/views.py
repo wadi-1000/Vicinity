@@ -19,7 +19,7 @@ def register(request):
 
 
 def profile(request):
-    profile = Profile.objects.get_or_create(user=request.user)
+    profile = Profile.objects.get_or_create(name=request.user)
     if request.method =='POST':
         profile_update_form = ProfileUpdateForm(request.POST or None, request.FILES, instance=request.user.profile)
         if profile_update_form.is_valid():

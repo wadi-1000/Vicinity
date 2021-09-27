@@ -14,9 +14,11 @@
             {% endif %}
             <div class="col-4">
                     <form method="POST">
-                        <h3 class="text-center">Vicinity</h3><br>
+                        
                         {% csrf_token %}
+                        <h3 style="margin-left: 60px;">Vicinity</h3><br>
                         <legend class="border-bottom mb-4">Join Today</legend>
+                        
                         {{ form|crispy }}
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary btn-sm">

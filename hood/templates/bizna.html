@@ -3,28 +3,8 @@
 {% load bootstrap5 %}
 
 {% block content %}
-<style>
-   div.gallery {
-    margin: 5px;
-    border: 1px solid rgb(255, 253, 253);
-    border-radius: 5px;
-    float: left;
-    width: 55%;
-  }
-  
-  div.gallery:hover {
-    border: 1px solid rgb(255, 255, 255);
-    border-radius: 7px;
-  }
-  
-  div.gallery img {
-    width: 100%;
-    height: auto;
-  }
-  
-   
-</style>
-<!-- <link rel="stylesheet" href="{% static 'css/bizna.css' %}"> -->
+
+<link rel="stylesheet" href="{% static 'css/bizna.css' %}">
 <div class="container-fluid viewbizna">
     
        
@@ -46,12 +26,12 @@
                 {% for bizna in bizna %}
                 <div class="gallery">
                     <div class="card">
-                    <img src="{{bizna.image.url}}" alt="Buisness" width="700" height="400">
+                    <img src="{{bizna.image.url}}" alt="Buisness" width="600" height="400">
                     <div class="desc"><p>Buisness name: {{bizna.name}}</p></div>
                   <div class="desc"><p>Location: {{bizna.hood}}</p></div>
                   <a href="{% url 'bizna' bizna.id %}" class="btn btn-outline-primary btn-sm">More</a>                
                 
-              
+                  </div>
                   </div>
                 {% endfor %}
             

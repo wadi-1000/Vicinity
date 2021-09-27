@@ -48,7 +48,6 @@ def hood(request,pk):
 
     return render(request, 'viewhood.html', {"hood":hood})
 
-
 @login_required
 def uploadBuisness(request):
     form=UploadNewBuisness()
@@ -57,9 +56,9 @@ def uploadBuisness(request):
     if request.method =="POST":
         form=UploadNewBuisness(request.POST, request.FILES)
         if form.is_valid():
-            buisness=form.save(commit=False)
-            buisness.user=current_user
-            buisness.save()
+            bizna=form.save(commit=False)
+            bizna.user=current_user
+            bizna.save()
 
         return redirect('view_bizna')
 
@@ -67,6 +66,7 @@ def uploadBuisness(request):
         form=UploadNewBuisness()
 
     return render(request, 'uploadbuisness.html', {"form":form})
+
 
 
 
@@ -151,13 +151,13 @@ def searchHood(request):
 
 def join_neighbourhood(request, id):
     neighbourhood = get_object_or_404(Neighbourhood, id=id)
-    request.user.neighbourhood = neighbourhood
+    request.user.hood = neighbourhood
     request.user.profile.save()
     return redirect('viewhood')
 
 
 def leave_neighbourhood(request, id):
     hood = get_object_or_404(Neighbourhood, id=id)
-    request.user.neighbourhood = None
+    request.user.hood = None
     request.user.profile.save()
     return redirect('viewhood')
