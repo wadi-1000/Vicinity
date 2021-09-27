@@ -57,4 +57,4 @@ If any problems arise contact me at:
 
 ### License
 
-[Here] (https://raw.githubusercontent.com/wadi-1000/Awwards/master/README.md)
+[Here] (https://raw.githubusercontent.com/wadi-1000/Vicinity/master/LICENSE)
